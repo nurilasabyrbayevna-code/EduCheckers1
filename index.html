@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduCheckers – оқи отырып ойна!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Hero секциясы -->
+<section id="home" class="section-hero">
+  <h1>EduCheckers – оқи отырып ойна!</h1>
+  <p>Шашки ойнап қана қоймай, қазақ тілінің грамматикалық сұрақтарын меңгер!</p>
+  <div class="btn-group">
+    <button onclick="startGame()">Ойнауды бастау</button>
+    <button onclick="showRules()">Ережелер</button>
+    <button onclick="showTeacher()">Мұғалімге арналған</button>
+  </div>
+</section>
+
+<!-- Ойын бөлімі -->
+<section id="game" class="hidden section-game">
+  <h2>Ойын бөлімі</h2>
+  <div id="board"></div>
+  <div id="question">
+    <p id="question-text"></p>
+    <div id="answers"></div>
+  </div>
+  <div id="winner" class="hidden"></div>
+  <button onclick="showHome()">Басты бетке қайту</button>
+</section>
+
+<!-- Ережелер -->
+<section id="rules" class="hidden section-rules">
+  <h2>Ойын ережесі</h2>
+  <p>Барлық шашкаларға қазақ тілінің шылау тақырыбы бойынша сұрақтар беріледі. Дұрыс жауап → шашка жүреді, қате жауап → жүріс болмайды.</p>
+  <button onclick="showHome()">Басты бетке қайту</button>
+</section>
+
+<!-- Мұғалімге арналған -->
+<section id="teacher" class="hidden section-teacher">
+  <h2>Мұғалімге арналған</h2>
+  <p>Ойынды қалай өткізуге болады, сұрақтарды деңгей бойынша таңдау, прогресті бақылау.</p>
+  <button onclick="showHome()">Басты бетке қайту</button>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
