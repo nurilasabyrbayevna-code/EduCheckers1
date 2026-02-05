@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html lang="kk">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduCheckers – оқи отырып ойна!</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EduCheckers – оқи отырып ойна!</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- Навигация -->
+<nav>
+  <ul>
+    <li><a href="#home">Басты бет</a></li>
+    <li><a href="#game">Ойын</a></li>
+    <li><a href="#rules">Ережелер</a></li>
+    <li><a href="#teacher">Мұғалімге арналған</a></li>
+  </ul>
+</nav>
 
 <!-- Басты бет -->
 <section id="home" class="section-hero">
   <div class="hero-content">
     <h1>EduCheckers – оқи отырып ойна!</h1>
-    <p>Шашки ойнап қана қоймай, қазақ тілінің грамматикалық сұрақтарын меңгер!</p>
+    <p>Шашки ойнау барысында әр қадамда қазақ тілінің шылау тақырыбы бойынша сұрақтарға жауап беріп, білімді дамытасың!</p>
     <div class="btn-group">
-      <button onclick="startGame()">Ойнауды бастау</button>
-      <button onclick="showRules()">Ережелер</button>
-      <button onclick="showTeacher()">Мұғалімге арналған</button>
+      <button onclick="scrollToSection('game')">Ойнауды бастау</button>
+      <button onclick="scrollToSection('rules')">Ережелер</button>
+      <button onclick="scrollToSection('teacher')">Мұғалімге арналған</button>
     </div>
   </div>
 </section>
 
 <!-- Ойын бөлімі -->
-<section id="game" class="hidden section-game">
+<section id="game" class="section-game">
   <h2>Ойын бөлімі</h2>
   <div id="board"></div>
   <div id="question">
@@ -30,11 +40,10 @@
     <div id="answers"></div>
   </div>
   <div id="winner" class="hidden"></div>
-  <button onclick="showHome()">Басты бетке қайту</button>
 </section>
 
 <!-- Ережелер -->
-<section id="rules" class="hidden section-rules">
+<section id="rules" class="section-rules">
   <h2>Ойын ережесі</h2>
   <div class="card-container">
     <div class="rule-card">
@@ -48,15 +57,14 @@
       </ul>
     </div>
     <div class="rule-card">
-      <h3>Грамматика сұрақтары</h3>
+      <h3>Сұрақтар</h3>
       <p>Барлық шашкалар қазақ тілінің шылау тақырыбы бойынша сұрақтарға ие.</p>
     </div>
   </div>
-  <button onclick="showHome()">Басты бетке қайту</button>
 </section>
 
-<!-- Мұғалімдерге арналған -->
-<section id="teacher" class="hidden section-teacher">
+<!-- Мұғалімге арналған -->
+<section id="teacher" class="section-teacher">
   <h2>Мұғалімге арналған</h2>
   <div class="card-container">
     <div class="teacher-card">
@@ -65,10 +73,9 @@
     </div>
     <div class="teacher-card">
       <h3>Кеңестер</h3>
-      <p>Қиындық деңгейін оқушылардың қабілетіне қарай таңдаңыз. Прогресті бақылау үшін статистика енгізуге болады.</p>
+      <p>Қиындық деңгейін оқушылардың қабілетіне қарай таңдаңыз. Статистика арқылы қай тақырыпты көп қайталау керектігін бақылауға болады.</p>
     </div>
   </div>
-  <button onclick="showHome()">Басты бетке қайту</button>
 </section>
 
 <script src="script.js"></script>
