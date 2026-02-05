@@ -1,41 +1,30 @@
-// Навигация
-const sections = {
-    home: document.getElementById('home'),
-    game: document.getElementById('game'),
-    rules: document.getElementById('rules'),
-    teacher: document.getElementById('teacher')
-};
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Roboto',sans-serif; background:#fafafa; color:#333; text-align:center; }
+.hidden { display:none; }
 
-function toggleSections(show){
-    for(let k in sections) sections[k].classList.add('hidden');
-    sections[show].classList.remove('hidden');
-}
-function showHome(){ toggleSections('home'); resetGame(); }
-function showRules(){ toggleSections('rules'); }
-function startGame(){ toggleSections('game'); initBoard(); }
-function showTeacher(){ toggleSections('teacher'); }
+/* Hero */
+.section-hero { background: linear-gradient(135deg,#4a90e2,#50c9c3); color:white; padding:120px 20px; }
+.section-hero h1 { font-size:3rem; margin-bottom:10px; }
+.section-hero p { font-size:1.2rem; margin-bottom:30px; }
+.btn-group button { margin:0 10px; padding:12px 24px; font-size:18px; background:#ffdd59; border:none; border-radius:8px; cursor:pointer; transition: transform 0.3s; }
+.btn-group button:hover { transform: scale(1.08); }
 
-// Дыбыстар
-const correctSound = new Audio('sounds/correct.mp3');
-const wrongSound = new Audio('sounds/wrong.mp3');
-const moveSound = new Audio('sounds/move.mp3');
-const captureSound = new Audio('sounds/capture.mp3');
+/* Sections */
+.section-game, .section-rules, .section-teacher { padding:40px 20px; }
 
-// Ойын логикасы
-let boardState=[], selectedPiece=null;
+/* Cards */
+.card-container { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+.rule-card, .teacher-card { background:white; padding:24px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.15); max-width:300px; transition: transform 0.3s; }
+.rule-card:hover, .teacher-card:hover { transform: scale(1.05); }
 
-// 🔹 40 сұрақ (W1-W20, B1-B20)
-const questions = [
-  {piece:'W1', question:'«Мен барамын, … сен үйде қаласың» – дұрыс шылау?', options:['бірақ','және','немесе'], answer:'бірақ'},
-  {piece:'W2', question:'«Ол кітап оқиды, … сабаққа дайындалады» – дұрыс шылау?', options:['және','немесе','бірақ'], answer:'және'},
-  {piece:'W3', question:'«Сен оқыдың ба, … мен де оқыдым» – дұрыс шылау?', options:['де','па','ме'], answer:'де'},
-  {piece:'W4', question:'«Ол жүгірді, … мен кідірмедім» – дұрыс шылау?', options:['және','бірақ','немесе'], answer:'және'},
-  {piece:'W5', question:'«Мен тамақ іштім, … сен әлі ашсың» – дұрыс шылау?', options:['бірақ','немесе','және'], answer:'бірақ'},
-  {piece:'W6', question:'«Ол ән айтты, … би де биледі» – дұрыс шылау?', options:['және','бірақ','немесе'], answer:'және'},
-  {piece:'W7', question:'«Сен барасың ба, … мен қаламын» – дұрыс шылау?', options:['бірақ','және','немесе'], answer:'бірақ'},
-  {piece:'W8', question:'«Мен дайындалдым, … сен де дайындалдың ба?» – дұрыс шылау?', options:['және','немесе','бірақ'], answer:'және'},
-  {piece:'W9', question:'«Ол оқиды, … ойынға барады» – дұрыс шылау?', options:['бірақ','немесе','және'], answer:'немесе'},
-  {piece:'W10', question:'«Мен кітап оқимын, … сен де оқисың» – дұрыс шылау?', options:['де','па','бірақ'], answer:'де'},
-  {piece:'B1', question:'«Мен барамын, … сен қаласың ба?» – дұрыс шылау?', options:['бірақ','және','немесе'], answer:'бірақ'},
-  {piece:'B2', question:'«Ол кітап оқиды, … сабаққа дайындалады» – дұрыс шылау?', options:['және','немесе','бірақ'], answer:'және'},
-  {piece:'B3', question:'«Сен дайынсың ба, … мен де дайын
+/* Board */
+#board { display:grid; grid-template-columns:repeat(8,60px); gap:2px; margin:20px auto; }
+.cell { width:60px; height:60px; position:relative; }
+.cell.black { background:#333; }
+.cell.white { background:#eee; }
+.piece { width:50px; height:50px; cursor:pointer; transition:0.3s ease; border-radius:50%; }
+.piece.white { background:url('images/white-piece.png') no-repeat center/contain; }
+.piece.black { background:url('images/black-piece.png') no-repeat center/contain; }
+#question { margin-top:20px; }
+#answers button { margin:5px; padding:6px 12px; cursor:pointer; }
+#winner { font-size:24px; font-weight:bold; color:#0d6efd; margin-top:20px; }
